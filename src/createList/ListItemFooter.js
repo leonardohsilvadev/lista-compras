@@ -15,9 +15,10 @@ const ListItemFooter = (props) => (
             icon={faTrash}
             color="#e91e63"
             size="1x"
+            onClick={() => props.deleteProduct(props.item.id)}
             />
         </div>
-        <p>Total: R${props.total},00</p>
+        <p>Total: R${props.item.total},00</p>
     </div>
 )
 

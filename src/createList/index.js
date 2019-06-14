@@ -18,7 +18,7 @@ class CreateList extends Component {
                 <Form addProduct={this.props.addProduct} />
 
                 <div className="list-items-container">    
-                    {this.props.list.items.map(item => <ListItem item={item} key={item.product} />)}
+                    {this.props.list.items.map(item => <ListItem item={item} key={item.id} deleteProduct={this.props.deleteProduct} />)}
                 </div>
             </div>
             )
@@ -27,6 +27,7 @@ class CreateList extends Component {
     addProduct = (product, list) => {
         this.props.addProduct(product, list)
     }
+    
 }
 
 const mapStateToProps = state => ({
