@@ -21,13 +21,13 @@ const List = (props) => {
                 <div className="list-card-body">
                     <ListItem
                         icon={faShoppingBasket}
-                        text="1 Item(s) Restante(s)"
+                        text= {`${props.openedItems} Item(s) Restante(s)`}
                     >
                     </ListItem>
 
                     <ListItem
                         icon={faCheck}
-                        text="2 Item(s) Comprado(s)"
+                        text={`${props.closedItems} Item(s) Comprado(s)`}
                     >
                     </ListItem>
                 </div>
