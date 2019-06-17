@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+
+import { bindActionCreators } from "redux";
+
+import { Creators as FormActions } from "../store/actions/form";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
@@ -18,6 +24,19 @@ class Form extends Component {
         showErrors: false,
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.form.action === "update" && prevProps.form.productToUpdate !== this.props.form.productToUpdate) {
+            const { product, quantity, unit, price } = this.props.form.productToUpdate;
+
+            this.setState({
+                product,
+                quantity,
+                unit,
+                price,
+            })
+        }
+    }
+
     render() {
         return (
             <form className="form-container">
@@ -31,7 +50,7 @@ class Form extends Component {
                         error={!this.state.list && this.state.showErrors}
                     />
 
-                    <Button variant="outlined" color="secondary" onClick={this.handleSubmit}>Adicionar</Button>
+                    <Button variant="outlined" color="secondary" onClick={this.handleSubmit}>Salvar</Button>
                 </div>
                 <div className="form-row">
                     <TextField
@@ -95,10 +114,35 @@ class Form extends Component {
         if (!list || !product || !quantity || !unit) {
             this.setState({ showErrors: true });  
         } else {
-        this.props.addProduct({ product, quantity, unit, price }, list);
-        this.setState({ product: "", quantity: "", unit: "" });
+            this.props.form.action === "new" ?
+            this.addItem(list, product, quantity, unit, price) :
+            this.updateItem(list, product, quantity, unit, price)
         }
     }
+
+    addItem = (list, product, quantity, unit, price) => {
+        this.props.addProduct({ product, quantity, unit, price }, list);
+        this.clearState();
+    }
+
+    updateItem = (list, product, quantity, unit, price) => {
+        const { id, checked } = this.props.form.productToUpdate;
+        this.props.updateProduct({ product, quantity, unit, price, id, checked }, list);
+        this.clearState();
+        this.props.finishUpdate();
+    }
+
+
+    clearState = () => {
+        this.setState({ product: "", quantity: "", unit: "" });
+    }
+
 }
 
-export default Form;
+const mapStateToProps = state => ({
+    form: state.form,
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(FormActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

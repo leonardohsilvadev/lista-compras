@@ -11,10 +11,12 @@ const INITIAL_STATE = {
 
 export default function list(state=INITIAL_STATE, action) {
     switch(action.type) {
+
         case Types.ADD_PRODUCT:
             return {
                 list: action.list,
-                items: [ ...state.items,
+                items: [
+                    ...state.items,
                     { ...action.product,
                         total: getItemTotal(action.product),
                         id: uuidv1(),
@@ -26,13 +28,19 @@ export default function list(state=INITIAL_STATE, action) {
         case Types.DELETE_PRODUCT:
             return {
                 ...state,
-                items: state.items.filter(item => item.id != action.productId)
+                items: state.items.filter(item => item.id !== action.productId)
             }
 
         case Types.TOGGLE_PRODUCT:
             return {
                 ...state,
                 items: toggleItem(state.items, action.productId)
+            }
+
+        case Types.UPDATE_PRODUCT:
+            return {
+                list: action.list,
+                items: updateProduct(state.items, action.product),
             }
 
         default:
@@ -49,9 +57,18 @@ function getItemTotal(product) {
 function toggleItem(items, productId) {
     const index = items.findIndex(item => item.id === productId);
     return [
-        ... items.slice(0, index), // Itens antes do item ser modificado
-        { ... items[index], checked: !items[index].checked }, // Item atualizado
-        ... items.slice(index + 1) // Todos os itens após o item ser modificado
+        ...items.slice(0, index), // Itens antes do item ser modificado
+        { ...items[index], checked: !items[index].checked }, // Item atualizado
+        ...items.slice(index + 1) // Todos os itens após o item ser modificado
+    ]
+}
+
+function updateProduct(items, product) {
+    const index = items.findIndex(item => item.id === product.id);
+    return [
+        ...items.slice(0, index),
+        { ...product, total: getItemTotal(product) },
+        ...items.slice(index + 1),
     ]
 }
 
