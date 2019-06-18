@@ -13,11 +13,12 @@ const ListItem = ({item, deleteProduct, toggleProduct}) => (
             image="https://img.itdg.com.br/tdg/images/blog/uploads/2017/12/xicara-de-cafe-e-graos.jpg"
             link="#"
             footer={<ListItemFooter item={item} deleteProduct={deleteProduct} />}
+            action={() => toggleProduct(item.id)}
         >
         <div>
             <div className="list-item-header">
                 <Typography variant="subtitle1" component="h2">{item.product}</Typography>
-                <Checkbox onClick={() => toggleProduct(item.id)} checked={item.checked} />
+                <Checkbox checked={item.checked} />
             </div>
                 <Typography component="p">{item.quantity} {item.unit}</Typography>
                 <Typography component="p">{item.price}</Typography>

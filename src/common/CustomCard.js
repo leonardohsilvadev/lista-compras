@@ -16,7 +16,7 @@ const CustomCard = (props) => {
         <div className={props.containerClass}>
             <Link to={props.link}>
                 <Card className="card">
-                    <CardActionArea className="card-action-area">
+                    <CardActionArea className="card-action-area" onClick={props.action}>
                         {props.image && ( 
                         <CardMedia
                             component="img"

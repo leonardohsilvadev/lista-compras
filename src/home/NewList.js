@@ -5,6 +5,7 @@ import CustomCard from "../common/CustomCard";
 const NewList = (props) => {
     return (
         <CustomCard
+            action={props.newList}
             containerClass="new-list-container"
             link="/lista"
         >

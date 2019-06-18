@@ -134,7 +134,7 @@ class Form extends Component {
 
 
     clearState = () => {
-        this.setState({ product: "", quantity: "", unit: "" });
+        this.setState({ product: "", quantity: "", unit: "", price: "" });
     }
 
 }
