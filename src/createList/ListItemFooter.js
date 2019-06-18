@@ -16,7 +16,7 @@ const ListItemFooter = (props) => (
             icon={faPen}
             color="#00b0ff"
             size="1x"
-            onClick={() => props.startUpdate(props.item)}
+            onClick={() => props.startUpdate(props.item, props.list)}
             />
             <FontAwesomeIcon
             icon={faTrash}

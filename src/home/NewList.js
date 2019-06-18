@@ -7,7 +7,7 @@ const NewList = (props) => {
         <CustomCard
             action={props.newList}
             containerClass="new-list-container"
-            link="/lista"
+            link="/lista/novo"
         >
             <div>
                 <p className="title">Adicionar Nova Lista!</p>

@@ -11,7 +11,7 @@ import { faShoppingBasket, faCheck } from "@fortawesome/free-solid-svg-icons";
 const List = (props) => {
     return (
         <CustomCard containerClass="list-container"
-            link="/lista"
+            link="/lista/editar"
             footer={
                 <ListFooter total={props.total} />
             }

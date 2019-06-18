@@ -6,13 +6,13 @@ import ListItemFooter from "./ListItemFooter";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 
-const ListItem = ({item, deleteProduct, toggleProduct}) => (
+const ListItem = ({item, deleteProduct, toggleProduct, list}) => (
 
         <CustomCard
             containerClass="list-item"
             image="https://img.itdg.com.br/tdg/images/blog/uploads/2017/12/xicara-de-cafe-e-graos.jpg"
             link="#"
-            footer={<ListItemFooter item={item} deleteProduct={deleteProduct} />}
+            footer={<ListItemFooter list={list} item={item} deleteProduct={deleteProduct} />}
             action={() => toggleProduct(item.id)}
         >
         <div>
