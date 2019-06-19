@@ -46,7 +46,7 @@ export default function list(state=INITIAL_STATE, action) {
 
         case Types.NEW_LIST:
             return {
-                ... INITIAL_STATE,
+                ...INITIAL_STATE,
                 date: getDate()
             }
 
