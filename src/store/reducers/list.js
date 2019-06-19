@@ -16,14 +16,6 @@ export default function list(state=INITIAL_STATE, action) {
             return {
                 ...state,
                 list: action.list,
-                items: [
-                    ...state.items,
-                    { ...action.product,
-                        total: getItemTotal(action.product),
-                        id: uuidv1(),
-                        checked: false,
-                    }
-                ]
             };
 
         case Types.DELETE_PRODUCT:
@@ -48,6 +40,35 @@ export default function list(state=INITIAL_STATE, action) {
             return {
                 ...INITIAL_STATE,
                 date: getDate()
+            }
+
+        case Types.GET_IMAGE_SUCCESS:
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                    {
+                        ...action.product,
+                        total: getItemTotal(action.product),
+                        id: uuidv1(),
+                        checked: false
+                    }
+                ]
+            }
+
+        case Types.GET_IMAGE_FAILURE:
+            return {
+                ...state,
+                items: [
+                    ...state.items,
+                    {
+                        ...action.product,
+                        total: getItemTotal(action.product),
+                        id: uuidv1(),
+                        checked: false,
+                        image: action.image,
+                    }
+                ]
             }
 
         default:
