@@ -15,7 +15,7 @@ import "./Home.css";
 
 const Home = (props) => {
         return (
-            <div className="page-container">
+            <div className="page-container home-image">
                 <NewList newList={props.newList} />
                 {props.list.items.length > 0 &&
                 <List

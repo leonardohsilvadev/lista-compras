@@ -15,7 +15,7 @@ import "./List.css";
 class CreateList extends Component {
     render() {
         return (
-            <div className="page-container">
+            <div className="page-container list-image">
                 <Form
                     addProduct={this.props.addProduct}
                     updateProduct={this.props.updateProduct}

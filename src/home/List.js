@@ -12,6 +12,7 @@ const List = (props) => {
     return (
         <CustomCard containerClass="list-container"
             link="/lista/editar"
+            cardClass={props.openedItems < 1 ? "closed-list" : "opened-list"}
             footer={
                 <ListFooter total={props.total} />
             }
