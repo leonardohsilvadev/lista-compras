@@ -14,7 +14,7 @@ const List = (props) => {
             link="/lista/editar"
             cardClass={props.openedItems < 1 ? "closed-list" : "opened-list"}
             footer={
-                <ListFooter total={props.total} />
+                <ListFooter date={props.date} total={props.total} />
             }
         >
             <div>
