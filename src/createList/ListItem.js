@@ -10,7 +10,7 @@ const ListItem = ({item, deleteProduct, toggleProduct, list}) => (
 
         <CustomCard
             containerClass="list-item"
-            image="https://img.itdg.com.br/tdg/images/blog/uploads/2017/12/xicara-de-cafe-e-graos.jpg"
+            image={item.image}
             link="#"
             footer={<ListItemFooter list={list} item={item} deleteProduct={deleteProduct} />}
             action={() => toggleProduct(item.id)}

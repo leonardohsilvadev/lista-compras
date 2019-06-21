@@ -51,7 +51,8 @@ export default function list(state=INITIAL_STATE, action) {
                         ...action.product,
                         total: getItemTotal(action.product),
                         id: uuidv1(),
-                        checked: false
+                        checked: false,
+                        image: action.image,
                     }
                 ]
             }

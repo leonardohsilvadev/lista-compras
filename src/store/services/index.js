@@ -12,6 +12,6 @@ export const services = {
         }
         return axios.get("https://www.googleapis.com/customsearch/v1", { params })
         .then(response => response.data.items[0].link)
-        .catch(error => console.log("Erro :", error))
+        .catch(error => console.log("Erro no get:", error))
     }
 }
